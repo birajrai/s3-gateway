@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  php-s3:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    ports:
+      - "8001:80"
+    volumes:
+      - php_data:/var/www/html/data
+    environment:
+      - DATA_DIR=/var/www/html/data
+    restart: unless-stopped
+
+  go-s3:
+    build:
+      context: ./go
+      dockerfile: Dockerfile
+    ports:
+      - "8002:8000"
+    volumes:
+      - go_data:/app/data
+    environment:
+      - S3_DATA_DIR=/app/data
+    restart: unless-stopped
+
+  rust-s3:
+    build:
+      context: ./rust
+      dockerfile: Dockerfile
+    ports:
+      - "8003:8000"
+    volumes:
+      - rust_data:/app/data
+    environment:
+      - S3_DATA_DIR=/app/data
+    restart: unless-stopped
+
+volumes:
+  php_data:
+  go_data:
+  rust_data:

@@ -2,14 +2,36 @@
 
 S3-compatible object storage server in Go.
 
-## Run
+## Run Directly
 
-```
+```bash
 go build -o s3server.exe
 ./s3server.exe
 ```
 
-Port: 8000
+Default port: 8000
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `S3_PORT` | `8000` | Port |
+| `S3_HOST` | `0.0.0.0` | Host |
+| `S3_DATA_DIR` | `./data` | Data directory |
+| `S3_ACCESS_KEY` | `minioadmin` | Access key |
+| `S3_SECRET_KEY` | `minioadmin` | Secret key |
+| `S3_DEBUG` | `false` | Debug mode |
+
+## Run with Docker
+
+```bash
+# Build & run
+docker-compose up -d
+
+# Or build manually
+docker build -t go-s3 .
+docker run -p 8000:8000 -v s3_data:/app/data -e S3_DATA_DIR=/app/data go-s3
+```
 
 ## Operations
 
