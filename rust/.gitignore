@@ -1,0 +1,23 @@
+# Binaries
+s3-server
+target/
+
+# Data directory
+data/
+
+# Logs
+*.log
+s3server.log
+
+# Environment
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
