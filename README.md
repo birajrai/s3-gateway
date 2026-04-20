@@ -31,6 +31,4 @@ cargo build --release
 
 Default port: 8000
 
-## License
-
-MIT
+See [LICENSE](LICENSE)
